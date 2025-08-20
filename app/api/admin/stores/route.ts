@@ -40,7 +40,7 @@ export async function GET(request: NextRequest) {
         },
       },
       orderBy:
-        sortBy === "oldest" ? { createdAt: "asc" } : sortBy === "name_asc" ? { name: "asc" } : { createdAt: "desc" }, // 
+        sortBy === "oldest" ? { createdAt: "asc" } : sortBy === "name_asc" ? { name: "asc" } : { createdAt: "desc" }, 
     })
 
     const processedStores = stores
