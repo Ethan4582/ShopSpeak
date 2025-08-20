@@ -26,7 +26,7 @@ export async function AdminAnalytics() {
     }),
   ])
 
-  // Process rating distribution with percentages
+ 
   const totalRatings = ratingDistribution.reduce((sum, item) => sum + item._count.rating, 0)
   const processedRatingDistribution = ratingDistribution.map((item) => ({
     rating: item.rating,
@@ -34,7 +34,7 @@ export async function AdminAnalytics() {
     percentage: totalRatings > 0 ? ((item._count.rating / totalRatings) * 100).toFixed(1) : "0",
   }))
 
-  // Process top stores with ratings
+
   const processedTopStores = topStores
     .map((store) => {
       const avgRating =
@@ -49,7 +49,7 @@ export async function AdminAnalytics() {
     .sort((a, b) => b.avg_rating - a.avg_rating || b.review_count - a.review_count)
     .slice(0, 10)
 
-  // Process top users by rating count
+  
   const processedTopUsers = topUsers
     .map((user) => ({
       ...user,
@@ -59,7 +59,7 @@ export async function AdminAnalytics() {
     .sort((a, b) => b.rating_count - a.rating_count)
     .slice(0, 10)
 
-  // Get growth data for last 12 months
+
   const twelveMonthsAgo = new Date()
   twelveMonthsAgo.setMonth(twelveMonthsAgo.getMonth() - 12)
 

@@ -19,11 +19,11 @@ export function generateToken(user: User): string {
     email: user.email,
     name: user.name,
     role: user.role,
-    exp: Date.now() + 7 * 24 * 60 * 60 * 1000, // 7 days from now
+    exp: Date.now() + 7 * 24 * 60 * 60 * 1000, 
     iat: Date.now(),
   }
 
-  // Simple base64 encoding with signature
+ 
   const encodedPayload = Buffer.from(JSON.stringify(payload)).toString("base64")
   const signature = Buffer.from(JWT_SECRET + encodedPayload).toString("base64")
 
@@ -41,16 +41,15 @@ export function verifyToken(token: string): User | null {
       return null
     }
 
-    // Verify signature
+    
     const expectedSignature = Buffer.from(JWT_SECRET + encodedPayload).toString("base64")
     if (signature !== expectedSignature) {
       return null
     }
 
-    // Decode payload
     const payload = JSON.parse(Buffer.from(encodedPayload, "base64").toString())
 
-    // Check expiration
+
     if (!payload.exp || Date.now() > payload.exp) {
       return null
     }

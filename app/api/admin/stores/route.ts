@@ -4,7 +4,6 @@ import { verifyToken } from "@/lib/auth"
 
 export async function GET(request: NextRequest) {
   try {
-    // Verify admin access
     const token = request.cookies.get("auth-token")?.value
     if (!token) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
@@ -41,7 +40,7 @@ export async function GET(request: NextRequest) {
         },
       },
       orderBy:
-        sortBy === "oldest" ? { createdAt: "asc" } : sortBy === "name_asc" ? { name: "asc" } : { createdAt: "desc" }, // newest (default)
+        sortBy === "oldest" ? { createdAt: "asc" } : sortBy === "name_asc" ? { name: "asc" } : { createdAt: "desc" }, // 
     })
 
     const processedStores = stores
@@ -67,7 +66,7 @@ export async function GET(request: NextRequest) {
           case "most_reviews":
             return b.review_count - a.review_count || b.avg_rating - a.avg_rating
           default:
-            return 0 // Already sorted by Prisma
+            return 0 // 
         }
       })
 

@@ -6,7 +6,7 @@ import Link from "next/link"
 import { Users, Store, Star, TrendingUp } from "lucide-react"
 
 export async function AdminDashboard() {
-  // Get platform statistics
+
   const [userStats, userRoleCounts, storeStats, ratingStats] = await Promise.all([
     prisma.user.aggregate({
       where: { role: { not: "system_admin" } },
@@ -56,7 +56,7 @@ export async function AdminDashboard() {
   const customers = userRoleCounts.find((stat) => stat.role === "normal_user")?._count.id || 0
   const storeOwners = userRoleCounts.find((stat) => stat.role === "store_owner")?._count.id || 0
 
-  // Get recent activity
+  
   const [recentUsers, recentStores, recentRatings] = await Promise.all([
     prisma.user.findMany({
       where: { role: { not: "system_admin" } },

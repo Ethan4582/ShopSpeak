@@ -4,7 +4,7 @@ import { verifyToken } from "@/lib/auth"
 
 export async function GET(request: NextRequest) {
   try {
-    // Verify admin access
+   
     const token = request.cookies.get("auth-token")?.value
     if (!token) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
             ? { name: "asc" }
             : sortBy === "name_desc"
               ? { name: "desc" }
-              : { createdAt: "desc" }, // newest (default)
+              : { createdAt: "desc" }, 
     })
 
     const processedUsers = users
@@ -55,7 +55,7 @@ export async function GET(request: NextRequest) {
         if (sortBy === "most_active") {
           return b.store_count + b.rating_count - (a.store_count + a.rating_count)
         }
-        return 0 // Already sorted by Prisma
+        return 0 // 
       })
 
     return NextResponse.json({ users: processedUsers })

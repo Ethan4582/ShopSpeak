@@ -16,7 +16,7 @@ interface Store {
   name: string
   description: string
   address: string
-  image?: string // Add image field
+  image?: string // 
 }
 
 interface Rating {

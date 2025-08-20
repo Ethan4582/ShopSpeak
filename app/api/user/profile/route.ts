@@ -4,7 +4,6 @@ import { comparePassword, hashPassword, verifyToken } from "@/lib/auth"
 
 export async function PUT(request: NextRequest) {
   try {
-    // Get user from token
     const token = request.cookies.get("auth-token")?.value
     if (!token) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
@@ -17,7 +16,7 @@ export async function PUT(request: NextRequest) {
 
     const { name, email, currentPassword, newPassword } = await request.json()
 
-    // Validation
+ 
     if (!name || !email) {
       return NextResponse.json({ error: "Name and email are required" }, { status: 400 })
     }
@@ -33,7 +32,7 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ error: "Email is already taken" }, { status: 409 })
     }
 
-    // Handle password change
+ 
     const updateData: any = { name, email }
 
     if (newPassword) {

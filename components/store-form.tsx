@@ -19,7 +19,7 @@ interface Store {
   phone: string
   email: string
   website: string
-  image: string // Add image field to Store interface
+  image: string 
 }
 
 interface StoreFormProps {
@@ -34,7 +34,7 @@ export function StoreForm({ store }: StoreFormProps) {
     phone: store?.phone || "",
     email: store?.email || "",
     website: store?.website || "",
-    image: store?.image || "", // Add image field
+    image: store?.image || "", 
   })
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)

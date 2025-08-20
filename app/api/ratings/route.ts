@@ -4,7 +4,7 @@ import { verifyToken } from "@/lib/auth"
 
 export async function POST(request: NextRequest) {
   try {
-    // Get user from token
+    
     const token = request.cookies.get("auth-token")?.value
     if (!token) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
 
     const { storeId, rating, review } = await request.json()
 
-    // Validation
+
     if (!storeId || !rating || rating < 1 || rating > 5) {
       return NextResponse.json({ error: "Valid store ID and rating (1-5) are required" }, { status: 400 })
     }

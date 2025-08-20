@@ -34,7 +34,6 @@ export function ProfileForm({ user }: ProfileFormProps) {
     setError("")
     setMessage("")
 
-    // Validate password change if provided
     if (formData.newPassword) {
       if (formData.newPassword !== formData.confirmPassword) {
         setError("New passwords do not match")

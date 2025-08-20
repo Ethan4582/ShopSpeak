@@ -6,16 +6,15 @@ export async function POST(request: NextRequest) {
   try {
     const { email, password } = await request.json()
 
-    // Validation
+  
     if (!email || !password) {
       return NextResponse.json({ error: "Email and password are required" }, { status: 400 })
     }
 
-    // Check for admin credentials
     if (email === "admin123@gmail.com" && password === "admin123") {
-      // Generate token for admin
+      
       const token = generateToken({
-        id: "admin-id", // You can use a static id or generate one
+        id: "admin-id", // 
         email,
         name: "Admin",
         role: "system_admin",
@@ -60,13 +59,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid credentials" }, { status: 401 })
     }
 
-    // Verify password
+  
     const isValidPassword = await comparePassword(password, user.passwordHash)
     if (!isValidPassword) {
       return NextResponse.json({ error: "Invalid credentials" }, { status: 401 })
     }
 
-    // Generate token
+  
     const token = generateToken({
       id: user.id,
       email: user.email,
@@ -74,7 +73,7 @@ export async function POST(request: NextRequest) {
       role: user.role,
     })
 
-    // Set httpOnly cookie
+
     const response = NextResponse.json(
       {
         message: "Login successful",

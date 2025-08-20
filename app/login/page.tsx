@@ -33,7 +33,7 @@ export default function LoginPage() {
       const data = await response.json()
 
       if (response.ok) {
-        // Token is set as httpOnly cookie by the API
+   
         router.push("/dashboard")
       } else {
         setError(data.error || "Login failed")

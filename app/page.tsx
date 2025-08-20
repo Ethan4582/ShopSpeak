@@ -8,8 +8,6 @@ import { useEffect, useRef } from "react";
 import { useInView } from "framer-motion";
 import { Star, ArrowRight, Check, Search, Shield, Users, BarChart3, ThumbsUp, Quote } from "lucide-react";
 
-
-// Store review data
 const storeReviews = [
   {
     id: "1",
@@ -22,7 +20,7 @@ const storeReviews = [
     user: {
       name: "Sarah Johnson",
       role: "Regular Customer",
-      avatar: "/avatar1.png"
+      img: "/1.png"
     }
   },
   {
@@ -36,7 +34,7 @@ const storeReviews = [
     user: {
       name: "Mike Chen",
       role: "Tech Enthusiast",
-      avatar: "/avatar2.png"
+      img: "/2.png"
     }
   },
   {
@@ -50,7 +48,7 @@ const storeReviews = [
     user: {
       name: "Emily Rodriguez",
       role: "Fashion Blogger",
-      avatar: "/avatar3.png"
+      img: "/3.png"
     }
   },
   {
@@ -64,12 +62,12 @@ const storeReviews = [
     user: {
       name: "David Kim",
       role: "Homeowner",
-      avatar: "/avatar4.png"
+      img: "/4.png"
     }
   }
 ];
 
-// Platform stats
+
 const platformStats = [
   { value: "50K+", label: "Active Users" },
   { value: "10K+", label: "Rated Stores" },
@@ -77,7 +75,6 @@ const platformStats = [
   { value: "95%", label: "Satisfaction Rate" }
 ];
 
-// Features data
 const features = [
   {
     title: "Authentic Reviews",
@@ -101,7 +98,6 @@ const features = [
   }
 ];
 
-// Animation variants
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
@@ -188,8 +184,7 @@ export default function HomePage() {
   };
 
   useEffect(() => {
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
@@ -205,11 +200,8 @@ export default function HomePage() {
 
   return (
     <div className="overflow-hidden">
-      {/* Hero Section with DarkVeil */}
-      <section className="relative min-h-screen flex items-center justify-center">
-        <div className="absolute inset-0 z-0">
-        </div>
-        
+      {/* Hero Section with Simple Gradient Background */}
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-green-500 to-green-300">
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -252,10 +244,10 @@ export default function HomePage() {
               DISCOVER HONEST STORE RATINGS AND REVIEWS FROM REAL CUSTOMERS. MAKE INFORMED SHOPPING DECISIONS AND SUPPORT BUSINESSES THAT EXCEL.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild className=" text-primary hover:bg-gray-100">
+              <Button size="lg" asChild className="bg-white text-blue-600 hover:bg-gray-100 border-white">
                 <Link href="/register">GET STARTED</Link>
               </Button>
-              <Button variant="outline" size="lg" onClick={scrollToFeatures} className="border-white text-white hover:bg-white/10">
+              <Button variant="outline" size="lg" onClick={scrollToFeatures} className="bg-white text-blue-600 hover:bg-gray-100 border-white">
                 LEARN MORE
               </Button>
             </div>
@@ -323,7 +315,7 @@ export default function HomePage() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <Button size="lg" asChild>
+            <Button size="lg" asChild className="bg-blue-600 hover:bg-blue-700">
               <Link href="/register">JOIN OUR COMMUNITY</Link>
             </Button>
           </motion.div>
@@ -369,8 +361,8 @@ export default function HomePage() {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="text-center mt-12"
           >
-            <Button asChild>
-              <Link href="/reviews">EXPLORE MORE REVIEWS</Link>
+            <Button asChild className="bg-blue-600 hover:bg-blue-700">
+              <Link href="/stores">EXPLORE MORE STORES</Link>
             </Button>
           </motion.div>
         </div>
@@ -504,7 +496,7 @@ export default function HomePage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild>
+              <Button size="lg" asChild className="bg-blue-600 hover:bg-blue-700">
                 <Link href="/register">CREATE ACCOUNT</Link>
               </Button>
               <Button variant="outline" size="lg" asChild>

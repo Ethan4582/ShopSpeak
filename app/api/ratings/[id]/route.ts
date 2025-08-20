@@ -10,7 +10,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
   try {
     const { id } = await params
 
-    // Get user from token
+    
     const token = request.cookies.get("auth-token")?.value
     if (!token) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
@@ -23,7 +23,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 
     const { rating, review } = await request.json()
 
-    // Validation
+
     if (!rating || rating < 1 || rating > 5) {
       return NextResponse.json({ error: "Valid rating (1-5) is required" }, { status: 400 })
     }

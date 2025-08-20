@@ -10,7 +10,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
   try {
     const { id } = await params
 
-    // Get user from token
+    
     const token = request.cookies.get("auth-token")?.value
     if (!token) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
@@ -23,7 +23,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 
     const { name, description, address, phone, email, website } = await request.json()
 
-    // Validation
+    
     if (!name || !address) {
       return NextResponse.json({ error: "Name and address are required" }, { status: 400 })
     }

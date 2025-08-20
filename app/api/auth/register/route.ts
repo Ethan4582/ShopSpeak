@@ -6,7 +6,6 @@ export async function POST(request: NextRequest) {
   try {
     const { name, email, password, role } = await request.json()
 
-    // Validation
     if (!name || !email || !password || !role) {
       return NextResponse.json({ error: "All fields are required" }, { status: 400 })
     }
@@ -27,7 +26,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "User with this email already exists" }, { status: 409 })
     }
 
-    // Hash password
     const passwordHash = await hashPassword(password)
 
     const newUser = await prisma.user.create({

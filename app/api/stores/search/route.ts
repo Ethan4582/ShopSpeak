@@ -58,7 +58,7 @@ export async function GET(request: NextRequest) {
           case "most_reviews":
             return b.review_count - a.review_count || b.avg_rating - a.avg_rating
           default:
-            return 0 // Already sorted by Prisma
+            return 0 // 
         }
       })
 

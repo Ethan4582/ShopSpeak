@@ -57,8 +57,6 @@ export async function StoreOwnerReviewsList({ ownerId }: StoreOwnerReviewsListPr
       </Card>
     )
   }
-
-  // Group reviews by store
   const reviewsByStore = reviews.reduce(
     (acc, review) => {
       if (!acc[review.store.name]) {
