@@ -1,6 +1,6 @@
 # StoreRate - Store Rating Platform
 
-[![Demo Video](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+[![Demo Video]()](https://youtu.be/mb5oWhB5OH4)
 
 > A comprehensive web application that allows users to submit ratings for stores with role-based access control and modern UI animations.
 
