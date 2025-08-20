@@ -16,6 +16,7 @@ interface Store {
   name: string
   description: string
   address: string
+  image?: string // Add image field
 }
 
 interface Rating {
@@ -103,6 +104,14 @@ export function RatingForm({ store, existingRating }: RatingFormProps) {
   return (
     <Card>
       <CardHeader>
+        {/* Store Image */}
+        {store.image && (
+          <img
+            src={store.image}
+            alt={store.name}
+            className="mb-3 rounded-md w-full h-40 object-cover"
+          />
+        )}
         <CardTitle>{store.name}</CardTitle>
         <CardDescription>{store.address}</CardDescription>
       </CardHeader>

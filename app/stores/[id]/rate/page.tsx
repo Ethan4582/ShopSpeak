@@ -23,6 +23,13 @@ export default async function RateStorePage({ params }: RateStorePageProps) {
 
   const store = await prisma.store.findUnique({
     where: { id: Number.parseInt(id) },
+    select: {
+      id: true,
+      name: true,
+      description: true,
+      address: true,
+      image: true, 
+    },
   })
 
   if (!store) {

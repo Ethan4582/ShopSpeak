@@ -64,6 +64,18 @@ export default async function StoreDetailPage({ params }: StoreDetailPageProps) 
               <CardHeader>
                 <div className="flex justify-between items-start">
                   <div>
+                    {/* Store Image */}
+                    {store.image ? (
+                      <img
+                        src={store.image}
+                        alt={store.name}
+                        className="mb-4 rounded-md w-full h-48 object-cover"
+                      />
+                    ) : (
+                      <div className="mb-4 rounded-md w-full h-48 bg-gray-100 flex items-center justify-center text-gray-400">
+                        No Image
+                      </div>
+                    )}
                     <CardTitle className="text-2xl">{store.name}</CardTitle>
                     <CardDescription className="mt-2 text-base">{store.description}</CardDescription>
                     <p className="text-sm text-muted-foreground mt-1">Owner: {store.owner.name}</p>

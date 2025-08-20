@@ -22,6 +22,7 @@ interface Store {
   owner_name: string
   avg_rating: number
   review_count: number
+  image?: string
 }
 
 interface SearchableStoreListProps {
@@ -209,7 +210,7 @@ export function SearchableStoreList({
             </p>
           </div>
 
-          <div className="grid gap-6">
+          <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
             {stores.map((store) => (
               <Card key={store.id}>
                 <CardHeader>
@@ -217,7 +218,7 @@ export function SearchableStoreList({
                     <div>
                       <CardTitle className="text-xl">{store.name}</CardTitle>
                       <CardDescription className="mt-2">{store.description}</CardDescription>
-                      <p className="text-sm text-muted-foreground mt-1">Owner: {store.owner_name}</p>
+                      
                     </div>
                     <div className="flex items-center gap-2">
                       {Number(store.avg_rating) > 0 && (
@@ -230,6 +231,18 @@ export function SearchableStoreList({
                   </div>
                 </CardHeader>
                 <CardContent>
+                  {store.image ? (
+                    <img
+                      src={store.image}
+                      alt={store.name}
+                      className="mb-3 rounded-md w-full h-40 object-cover"
+                    />
+                  ) : (
+                    <div className="mb-3 rounded-md w-full h-40 bg-gray-100 flex items-center justify-center text-gray-400">
+                      No Image
+                    </div>
+                  )}
+
                   <div className="space-y-2">
                     <div className="flex items-start gap-2">
                       <MapPin className="h-4 w-4 mt-0.5 text-muted-foreground" />

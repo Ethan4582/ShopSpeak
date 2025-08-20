@@ -65,12 +65,20 @@ export async function StoreList({ ownerId, showOwnerActions = true }: StoreListP
   }
 
   return (
-    <div className="grid gap-6">
+    <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
       {processedStores.map((store) => (
         <Card key={store.id}>
           <CardHeader>
             <div className="flex justify-between items-start">
               <div>
+                {/* Store Image */}
+                {store.image && (
+                  <img
+                    src={store.image}
+                    alt={store.name}
+                    className="mb-3 rounded-md w-full h-40 object-cover"
+                  />
+                )}
                 <CardTitle className="text-xl">{store.name}</CardTitle>
                 <CardDescription className="mt-2">{store.description}</CardDescription>
                 {!ownerId && store.owner_name && (
